@@ -4,6 +4,7 @@ import fs from 'fs';
 import https from 'https';
 import cors from 'cors';
 import { createTableFuncionarios } from './Models/Funcionarios.js';
+import { createTableEntradas } from './Models/Entradas.js';
 
 const app = express();
 app.use(express.json());
@@ -11,7 +12,9 @@ app.use(cors());
 
 app.use(router);
 
+
 createTableFuncionarios();
+createTableEntradas();
 
 app.listen(3000, () => console.log('API Rodando'));
 
