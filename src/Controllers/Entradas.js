@@ -21,7 +21,7 @@ export async function insertEntradas(req, res){
   let entradas = req.body;
    openDb()
     .then(db=>{
-      db.run('INSERT INTO Entradas (id, nome,tipo) VALUES (?, ?, ?)', [entradas.id, entradas.nome, entradas.tipo])
+      db.run('INSERT INTO Entradas (id, nome, preco, ingredientes) VALUES (?,?, ?, ?)', [entradas.id, entradas.nome,entradas.preco, entradas.ingredientes])
   })
   res.json({
     "statusCode": 200
@@ -32,7 +32,7 @@ export async function updateEntradas(req, res){
   let entradas = req.body;
    openDb()
     .then(db=>{
-      db.run('UPDATE Entradas SET nome=?, tipo=? WHERE id=?', [ entradas.nome, entradas.tipo, entradas.id])
+      db.run('UPDATE Entradas SET nome=?,preco=?, ingredientes=? WHERE id=?', [ entradas.nome, entradas.preco, entradas.ingredientes, entradas.id])
   });
   res.json({
     "statusCode": 200
