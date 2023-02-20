@@ -13,6 +13,13 @@ import { insertEntradas,
    deleteEntrada 
   } from './Controllers/Entradas.js';
 
+  import { insertcliente, 
+    updatecliente, 
+    selectcliente, 
+    selectclientes,
+     deletecliente } from './Controllers/clientes.js';
+
+
 const router = Router();
 
 router.get('/', (req, res) => {
@@ -36,4 +43,13 @@ router.post('/entradas',insertEntradas)
 router.put('/entradas',updateEntradas)
 router.delete('/entradas',deleteEntrada)
 // Entradas
+
+//Clientes
+router.get('/clientes', selectclientes);
+router.get('/cliente', selectcliente);
+router.post('/cliente', insertcliente);
+router.put('/cliente', updatecliente);
+router.delete('/cliente', deletecliente);
+//Clientes
+
 export default router;
