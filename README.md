@@ -11,7 +11,8 @@ Repositório criado para guardar arquivos referente ao projeto em grupo do Módu
 
 ```sh
 
-git clone https://github.com/vtbrgt/crud-api-node 
+git clone https://github.com/
+vtbrgt/crud-api-node 
 
 ```
 
@@ -19,7 +20,10 @@ git clone https://github.com/vtbrgt/crud-api-node
 
 ```sh
 
-npm install express nodemon sqlite --save sqlite3 --save cors -5 https -5 fs -5
+npm install express nodemon 
+
+sqlite --save sqlite3 --save
+cors -5 https -5 fs -5
 
  
 
