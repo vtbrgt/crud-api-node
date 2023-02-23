@@ -1,4 +1,5 @@
 import { Router } from 'express';
+
 import {
   insertFuncionario,
   updateFuncionario,
@@ -6,19 +7,29 @@ import {
   selectFuncionario,
   deleteFuncionario,
 } from './Controllers/Funcionarios.js';
+
 import { insertEntradas,
    slectEntrada, 
    slectEntradas, 
    updateEntradas,
    deleteEntrada 
-  } from './Controllers/Entradas.js';
+} from './Controllers/Entradas.js';
 
-  import { insertcliente, 
+import { insertcliente, 
     updatecliente, 
     selectcliente, 
     selectclientes,
-     deletecliente } from './Controllers/clientes.js';
+     deletecliente 
+} from './Controllers/clientes.js';
 
+//Import CRUD da entidade Prato Principal
+import {
+      insertPrincipal,
+      updatePrincipal,
+      selectPrincipal,
+      selectUmPrincipal,
+      deleteUmPrincipal 
+} from './Controllers/PratoPrincipal.js';
 
 const router = Router();
 
@@ -51,5 +62,14 @@ router.post('/cliente', insertcliente);
 router.put('/cliente', updatecliente);
 router.delete('/cliente', deletecliente);
 //Clientes
+
+//PratoPrincipal
+router.get('/principal', selectPrincipal);
+router.get('/umprincipal', selectUmPrincipal);
+router.post('/principal', insertPrincipal);
+router.put('/principal', updatePrincipal);
+router.delete('/principal', deleteUmPrincipal);
+//PratoPrincipal
+
 
 export default router;

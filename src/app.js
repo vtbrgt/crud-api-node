@@ -6,6 +6,7 @@ import cors from 'cors';
 import { createTableFuncionarios } from './Models/Funcionarios.js';
 import { createTableEntradas } from './Models/Entradas.js';
 import { createTableClientes } from './Models/clientes.js';
+import { createPratoPrincipal } from './Models/PratoPrincipal.js';
 
 const app = express();
 app.use(express.json());
@@ -17,6 +18,7 @@ app.use(router);
 createTableFuncionarios();
 createTableEntradas();
 createTableClientes();
+createPratoPrincipal();
 
 app.listen(3000, () => console.log('API Rodando'));
 
