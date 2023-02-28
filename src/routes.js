@@ -31,6 +31,14 @@ import {
       deleteUmPrincipal 
 } from './Controllers/PratoPrincipal.js';
 
+import {insertSobremesas,
+  updateSobremesas,
+   selectSobremesas,
+    deleteSobremesas,
+     selectSobremesa } 
+     from './Controllers/Sobremesas.js';
+
+
 const router = Router();
 
 router.get('/', (req, res) => {
@@ -71,5 +79,11 @@ router.put('/principal', updatePrincipal);
 router.delete('/principal', deleteUmPrincipal);
 //PratoPrincipal
 
-
+//Sobremesas
+router.get('/Sobremesas',selectSobremesas)
+router.get('/Sobremesa',selectSobremesa)
+router.post('/Sobremesas',insertSobremesas)
+router.put('/Sobremesas',updateSobremesas)
+router.delete('/Sobremesas',deleteSobremesas)
+//Sobremesas
 export default router;
