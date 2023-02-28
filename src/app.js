@@ -7,7 +7,7 @@ import { createTableFuncionarios } from './Models/Funcionarios.js';
 import { createTableEntradas } from './Models/Entradas.js';
 import { createTableClientes } from './Models/clientes.js';
 import { createPratoPrincipal } from './Models/PratoPrincipal.js';
-import { createTableSobremesas}  from './models/Sobremesas.js';
+import { createTableSobremesas}  from './Models/Sobremesas.js';
 
 
 const app = express();
