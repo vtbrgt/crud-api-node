@@ -80,10 +80,10 @@ router.delete('/principal', deleteUmPrincipal);
 //PratoPrincipal
 
 //Sobremesas
-router.get('/Sobremesas',selectSobremesas)
-router.get('/Sobremesa',selectSobremesa)
-router.post('/Sobremesas',insertSobremesas)
-router.put('/Sobremesas',updateSobremesas)
-router.delete('/Sobremesas',deleteSobremesas)
+router.get('/sobremesas',selectSobremesas)
+router.get('/sobremesa',selectSobremesa)
+router.post('/sobremesas',insertSobremesas)
+router.put('/sobremesas',updateSobremesas)
+router.delete('/sobremesas',deleteSobremesas)
 //Sobremesas
 export default router;
