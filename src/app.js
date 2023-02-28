@@ -5,7 +5,7 @@ import https from 'https';
 import cors from 'cors';
 import { createTableFuncionarios } from './Models/Funcionarios.js';
 import { createTableEntradas } from './Models/Entradas.js';
-import { createTableClientes } from './Models/clientes.js';
+import { createTableClientes } from './Models/Clientes.js';
 import { createPratoPrincipal } from './Models/PratoPrincipal.js';
 import { createTableSobremesas}  from './Models/Sobremesas.js';
 

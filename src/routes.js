@@ -20,7 +20,7 @@ import { insertcliente,
     selectcliente, 
     selectclientes,
      deletecliente 
-} from './Controllers/clientes.js';
+} from './Controllers/Clientes.js';
 
 //Import CRUD da entidade Prato Principal
 import {
