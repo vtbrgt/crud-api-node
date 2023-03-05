@@ -2,6 +2,14 @@ import { openDb } from "../configDB.js";
 import bcrypt from "bcrypt";
 const Rounds = 10;
 
+export async function selectUsers(req, res){
+    openDb()
+      .then(db=>{
+       db.all('SELECT * FROM users')
+         .then(users=>res.json(users))
+    })
+  }
+
 export async function login(req, res){
   const {email_users, senha_users} = req.body;
   

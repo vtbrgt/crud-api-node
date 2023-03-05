@@ -38,7 +38,7 @@ import {insertSobremesas,
      selectSobremesa } 
      from './Controllers/Sobremesas.js';
 
-     import { login, registe } from './Controllers/Login.js';
+     import {selectUsers, login, registe } from './Controllers/Login.js';
 
 const router = Router();
 
@@ -49,6 +49,7 @@ router.get('/', (req, res) => {
   });
 });
 //Login
+router.get('/login', selectUsers)
 router.post('/login', login)
 router.post('/register', registe)
 //Login
