@@ -1,7 +1,7 @@
 import { openDb } from '../configDB.js';
 
-export async function createTableLogin(){
+export async function createTableUsers(){
   openDb().then(db=>{
-    db.exec('CREATE TABLE IF NOT EXISTS User (id INTEGER PRIMARY KEY AUTOINCREMENT ,EMAIL VARCHAR (50) not null, ENCRYPTED_PASSUWARD VARCHER(11) not null,AUTH_TOKEN TEXT)')
+      db.exec('CREATE TABLE IF NOT EXISTS users (cod_users INTEGER PRIMARY KEY, email_users varchar(50), senha_users varchar(30))') 
   })
-}
+};

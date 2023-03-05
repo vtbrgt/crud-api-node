@@ -8,7 +8,7 @@ import { createTableEntradas } from './Models/Entradas.js';
 import { createTableClientes } from './Models/Clientes.js';
 import { createPratoPrincipal } from './Models/PratoPrincipal.js';
 import { createTableSobremesas}  from './Models/Sobremesas.js';
-import { createTableLogin } from './Models/login.js';
+import { createTableUsers } from './Models/login.js';
 
 const app = express();
 app.use(express.json());
@@ -22,7 +22,7 @@ createTableEntradas();
 createTableClientes();
 createPratoPrincipal();
 createTableSobremesas();
-createTableLogin();
+createTableUsers();
 
 app.listen(3000, () => console.log('API Rodando'));
 

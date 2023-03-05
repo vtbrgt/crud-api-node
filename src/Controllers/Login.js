@@ -1,52 +1,62 @@
 import { openDb } from "../configDB.js";
+import bcrypt from "bcrypt";
+const Rounds = 10;
 
-
-export async function insertUser(req, res) {
-  let User = req.body;
-    openDb().then(db=>{
-      db.run('INSERT INTO (id,nome,preco,descricao) VALUES(?,?,?,?)',[User.id,User.nome,User.preco,User.descricao])
-       });
-       res.json({
-        "statusCode":200
-       })
-}
-
-export async function updateUser(req, res){
-  let User = req.params;
-    openDb().then(db=>{
-      db.run('UPDATE User SET EMAIL=?  WHERE id=?',[ User.EMAIL])
-       });
-       res.json({
-        "statusCode":200
-       })
-}
-
-export async function selectUser(req, res) {
-   openDb().then(db=>{
-     db.all('SELECT * FROM User')
-    .then(User=>res.json(User))
-     });
-
-}
-
-export async function selectUser(req,res){
-  let id = req.params.id;
-   openDb()
-    .then(db=>{
-       db.get('SELECT * FROM Sobremesa WHERE id=?',[id])
-        .then(User> res.json(User));
+export async function login(req, res){
+  const {email_users, senha_users} = req.body;
+  
+  openDb()
+  .then(db => {
+      db.all(`SELECT * FROM users WHERE email_users = ?`, [email_users])
+      .then((rows, err) =>{
+          if(err){
+              return res.json({err}); 
+          } 
+          if(rows.length > 0){ 
+              bcrypt.compare(senha_users, rows[0].senha_users)
+              .then((response, error) => {
+                  if(error){
+                      res.send(error)
+                  }
+                  if(response){
+                      res.json({validation: true, results: rows})
+                  }else{
+                      res.send({validation: false}) 
+                  }
+              }) 
+          }else{
+              return (res.send({msg: "Usuário não credenciado. Invalido!", validation: false}
+              ))
+          }
+      })
   })
-}
-
-
-
-export async function deleteUser(req, res){
-  let id = req.params.id;
-   openDb().then(db=>{
-     db.get('DELETE FROM User WHERE id=?',[id])
-    .then(res=>res)
-     });
-     res.json({
-      "statusCode":200
-     })
-}
+};
+export async function registe(req, res){
+    const {email_users, senha_users} = req.body;
+    
+    openDb()
+    .then(db => {
+        db.all("SELECT * FROM users WHERE email_users = ?", [email_users])
+        .then((rows, err) => {
+            if(err) {
+                res.send(err);
+            }
+            if(rows.length == 0) {
+                bcrypt.hash(senha_users, Rounds)
+                .then((hash, err) => {
+                db.run("INSERT INTO users (email_users, senha_users) VALUES (?,?)", [email_users, hash])
+                .then((response, error) => {
+                    if (error) {
+                        res.send(error);
+                    }
+                    if(response){
+                        res.send({ msg: "Usuário cadastrado com sucesso" });
+                    }}
+                );
+                });
+            } else {
+                res.send({ msg: "Email já cadastrado" });
+            }
+        });
+    });
+};
