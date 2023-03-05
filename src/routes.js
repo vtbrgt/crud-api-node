@@ -38,6 +38,7 @@ import {insertSobremesas,
      selectSobremesa } 
      from './Controllers/Sobremesas.js';
 
+     import { login, registe } from './Controllers/Login.js';
 
 const router = Router();
 
@@ -47,6 +48,11 @@ router.get('/', (req, res) => {
     msg: 'Api Rodando',
   });
 });
+//Login
+router.post('/login', login)
+router.post('/register', registe)
+//Login
+
 // Funcionarios
 router.get('/funcionarios', selectFuncionarios);
 router.get('/funcionario', selectFuncionario);
