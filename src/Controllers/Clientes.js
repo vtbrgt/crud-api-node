@@ -8,7 +8,7 @@ export async function selectclientes(req, res){
 }
 
 export async function selectcliente(req, res){
-   let id = req.body.id;
+   let id = req.params.id;
     openDb().then(db => {
         db.get('SELECT * FROM clientes WHERE id=?', [id])
        .then(cliente=>res.json(cliente))
@@ -26,9 +26,13 @@ export async function insertcliente(req, res){
 }
 
 export async function updatecliente(req, res){
-    let cliente = req.body;
+    const nome = req.body.nome;
+    const idade = req.body.idade;
+    const cpf = req.body.cpf;
+    const email = req.body.email;
+    const id = req.params.id;
     openDb().then(db => {
-        db.run('UPDATE clientes SET nome = ?, idade = ?, cpf = ?, email = ?, WHERE id = ?', [cliente.nome, cliente.idade, cliente.cpf, cliente.email, cliente.id])
+        db.run('UPDATE clientes SET nome = ?, idade = ?, cpf = ?, email = ? WHERE id = ?', [nome, idade, cpf, email,id])
     })
     res.json({
         "statuscode": "200"
@@ -36,7 +40,7 @@ export async function updatecliente(req, res){
 }
 
 export async function deletecliente(req, res){
-    let id = req.body.id;
+    let id = req.params.id;
      openDb().then(db => {
          db.get('DELETE FROM clientes WHERE id=?', [id])
         .then(res=>res)

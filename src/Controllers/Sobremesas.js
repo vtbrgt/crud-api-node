@@ -12,9 +12,12 @@ export async function insertSobremesas(req, res) {
 }
 
 export async function updateSobremesas(req, res){
-  let Sobremesas = req.body;
+  const nome= req.body.nome;
+  const preco= req.body.preco;
+  const descricao= req.body.descricao;
+  const id = req.params.id;
     openDb().then(db=>{
-      db.run('UPDATE Sobremesas SET nome=?, preco=?, descricao=? WHERE id=?',[ Sobremesas.nome, Sobremesas.preco, Sobremesas.descricao, Sobremesas.id])
+      db.run('UPDATE Sobremesas SET nome=?, preco=?, descricao=? WHERE id=?',[nome, preco, descricao, id])
        });
        res.json({
         "statusCode":200
@@ -30,7 +33,7 @@ export async function selectSobremesas(req, res) {
 }
 
 export async function selectSobremesa(req,res){
-  let id = req.body.id;
+  let id = req.params.id;
    openDb()
     .then(db=>{
        db.get('SELECT * FROM Sobremesa WHERE id=?',[id])
@@ -41,7 +44,7 @@ export async function selectSobremesa(req,res){
 
 
 export async function deleteSobremesas(req, res){
-  let id = req.body.id;
+  let id = req.params.id;
    openDb().then(db=>{
      db.get('DELETE FROM Sobremesas WHERE id=?',[id])
     .then(res=>res)

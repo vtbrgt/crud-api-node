@@ -7,7 +7,7 @@ import { createTableFuncionarios } from './Models/Funcionarios.js';
 import { createTableEntradas } from './Models/Entradas.js';
 import { createTableClientes } from './Models/Clientes.js';
 import { createPratoPrincipal } from './Models/PratoPrincipal.js';
-import { createTableSobremesas}  from './Models/Sobremesas.js';
+import { createTableSobremesas } from './Models/Sobremesas.js';
 import { createTableUsers } from './Models/login.js';
 
 const app = express();
@@ -15,7 +15,6 @@ app.use(express.json());
 app.use(cors());
 
 app.use(router);
-
 
 createTableFuncionarios();
 createTableEntradas();
@@ -32,6 +31,6 @@ https
       cert: fs.readFileSync('src/SSL/code.crt'),
       key: fs.readFileSync('src/SSL/code.key'),
     },
-    app
+    app,
   )
   .listen(3001, () => console.log('Rodando em https'));

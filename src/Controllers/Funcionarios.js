@@ -9,7 +9,7 @@ export async function selectFuncionarios(req, res) {
 }
 
 export async function selectFuncionario(req, res) {
-  let id = req.body.id;
+  let id = req.params.id;
   openDb().then((db) => {
     db.get('SELECT * FROM Funcionarios WHERE id=?', [id]).then((pessoa) =>
       res.json(pessoa)
@@ -31,13 +31,16 @@ export async function insertFuncionario(req, res) {
 }
 
 export async function updateFuncionario(req, res) {
-  let funcionario = req.body;
+  const nome = req.body.nome;
+  const sobrenome = req.body.sobrenome;
+  const cargo = req.body.cargo;
+  const id = req.params.id;
   openDb().then((db) => {
     db.run('UPDATE Funcionarios SET nome=?, sobrenome=?, cargo=? WHERE id=?', [
-      funcionario.nome,
-      funcionario.sobrenome,
-      funcionario.cargo,
-      funcionario.id,
+      nome,
+      sobrenome,
+      cargo,
+      id,
     ]);
   });
   res.json({
@@ -46,7 +49,7 @@ export async function updateFuncionario(req, res) {
 }
 
 export async function deleteFuncionario(req, res) {
-  let id = req.body.id;
+  let id = req.params.id;
   openDb().then((db) => {
     db.get('DELETE FROM Funcionarios WHERE id=?', [id]).then((res) => res);
   });
