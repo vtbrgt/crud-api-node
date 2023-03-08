@@ -56,41 +56,41 @@ router.post('/register', registe)
 
 // Funcionarios
 router.get('/funcionarios', selectFuncionarios);
-router.get('/funcionario', selectFuncionario);
+router.get('/funcionario/:id', selectFuncionario);
 router.post('/funcionario', insertFuncionario);
-router.put('/funcionario', updateFuncionario);
-router.delete('/funcionario', deleteFuncionario);
+router.put('/funcionario/:id', updateFuncionario);
+router.delete('/funcionario/:id', deleteFuncionario);
 // Funcionarios
 
 // Entradas
 router.get('/entradas',slectEntradas)
-router.get('/entrada',slectEntrada)
+router.get('/entrada/:id',slectEntrada)
 router.post('/entradas',insertEntradas)
-router.put('/entradas',updateEntradas)
-router.delete('/entradas',deleteEntrada)
+router.put('/entradas/:id',updateEntradas)
+router.delete('/entradas/:id',deleteEntrada)
 // Entradas
 
 //Clientes
 router.get('/clientes', selectclientes);
-router.get('/cliente', selectcliente);
+router.get('/cliente/:id', selectcliente);
 router.post('/cliente', insertcliente);
-router.put('/cliente', updatecliente);
-router.delete('/cliente', deletecliente);
+router.put('/cliente/:id', updatecliente);
+router.delete('/cliente/:id', deletecliente);
 //Clientes
 
 //PratoPrincipal
 router.get('/principal', selectPrincipal);
-router.get('/umprincipal', selectUmPrincipal);
+router.get('/umprincipal/:id', selectUmPrincipal);
 router.post('/principal', insertPrincipal);
-router.put('/principal', updatePrincipal);
-router.delete('/principal', deleteUmPrincipal);
+router.put('/principal/:id', updatePrincipal);
+router.delete('/principal/:id', deleteUmPrincipal);
 //PratoPrincipal
 
 //Sobremesas
 router.get('/sobremesas',selectSobremesas)
-router.get('/sobremesa',selectSobremesa)
+router.get('/sobremesa/:id',selectSobremesa)
 router.post('/sobremesas',insertSobremesas)
-router.put('/sobremesas',updateSobremesas)
-router.delete('/sobremesas',deleteSobremesas)
+router.put('/sobremesas/:id',updateSobremesas)
+router.delete('/sobremesas/:id',deleteSobremesas)
 //Sobremesas
 export default router;

@@ -9,7 +9,7 @@ export async function selectPrincipal(req, res) {
 }
 
 export async function selectUmPrincipal(req, res) {
-    let id = req.body.id;
+    let id = req.params.id;
     openDb()
         .then(db => {
             db.get('SELECT * FROM principal WHERE id=?', [id])
@@ -29,10 +29,13 @@ export async function insertPrincipal(req, res) {
 }
 
 export async function updatePrincipal(req, res) {
-    let nome = req.body;
+    const nome = req.body.nome;
+    const preco = req.body.preco;
+    const descricao = req.body.descricao;
+    const id = req.params.id;
     openDb()
         .then(db => {
-            db.run('UPDATE principal SET nome=? ,preco=? ,descricao=? WHERE id=?', [nome.nome, nome.preco, nome.descricao, nome.id]);
+            db.run('UPDATE principal SET nome=? ,preco=? ,descricao=? WHERE id=?', [nome, preco, descricao, id]);
             res.json({
                 "statusCode": 200
             })
@@ -42,7 +45,7 @@ export async function updatePrincipal(req, res) {
 
 
 export async function deleteUmPrincipal(req, res) {
-    let id = req.body.id;
+    let id = req.params.id;
     openDb()
         .then(db => {
             db.get('DELETE FROM principal WHERE id=?', [id]).then(res => res)
